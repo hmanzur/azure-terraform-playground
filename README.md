@@ -4,6 +4,10 @@
 
 Setup backend configuration https://learn.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli
 
+## Create a Service Principal
+
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret
+
 ## Commands
 
 ### Init
