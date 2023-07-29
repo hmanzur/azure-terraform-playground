@@ -21,10 +21,12 @@ steps:
   displayName: Install Dependencies
   inputs:
     command: init
+    backendType: azurerm
     environmentServiceName: TerraformConnectionName
 
 - task: TerraformCLI@0
   displayName: Apply Changes
   inputs:
     command: apply
+    backendType: azurerm
     environmentServiceName: TerraformConnectionName
