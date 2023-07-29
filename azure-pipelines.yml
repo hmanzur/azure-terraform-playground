@@ -12,9 +12,9 @@ pool:
 
 steps:
 - task: TerraformInstaller@0
-  displayName: Install Terraform
+  displayName: Setup Terraform
   inputs:
-    terraformVersion: 1.5.3
+    terraformVersion: 1.5.4
 
 - task: TerraformCLI@0
   displayName: Install Dependencies
