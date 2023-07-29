@@ -2,18 +2,27 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
+# Terraform task https://marketplace.visualstudio.com/items?itemName=charleszipp.azure-pipelines-tasks-terraform
 trigger:
 - main
 
 pool:
   vmImage: ubuntu-latest
+  # vmImage: macOS-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: TerraformInstaller
+  displayName: Install Terraform
+  inputs:
+    terraformVersion: 1.5.3
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: TerraformCLI
+  displayName: Install Dependencies
+  inputs:
+    command: init
+
+- task: TerraformCLI
+  displayName: Apply Changes
+  inputs:
+    command: apply
+    runAzLogin: true
