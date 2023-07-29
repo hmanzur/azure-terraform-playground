@@ -26,3 +26,5 @@ steps:
   inputs:
     command: apply
     runAzLogin: true
+    backendType: azurerm
+    backendAzureRmSubscriptionId: $(SubscriptionId)
