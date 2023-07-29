@@ -11,17 +11,17 @@ pool:
   # vmImage: macOS-latest
 
 steps:
-- task: TerraformInstaller
+- task: TerraformInstaller@0
   displayName: Install Terraform
   inputs:
     terraformVersion: 1.5.3
 
-- task: TerraformCLI
+- task: TerraformCLI@0
   displayName: Install Dependencies
   inputs:
     command: init
 
-- task: TerraformCLI
+- task: TerraformCLI@0
   displayName: Apply Changes
   inputs:
     command: apply
