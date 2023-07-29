@@ -3,6 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 # Terraform task https://marketplace.visualstudio.com/items?itemName=charleszipp.azure-pipelines-tasks-terraform
+# https://learn.microsoft.com/es-es/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&WT.mc_id=AZ-MVP-5004321
 trigger:
 - main
 
@@ -22,7 +23,7 @@ steps:
     command: init
     runAzLogin: true
     backendType: azurerm
-    backendAzureRmSubscriptionId: $(SubscriptionId)
+    backendAzureRmSubscriptionId: $(azureSubscription)
 
 - task: TerraformCLI@0
   displayName: Apply Changes
@@ -30,4 +31,4 @@ steps:
     command: apply
     runAzLogin: true
     backendType: azurerm
-    backendAzureRmSubscriptionId: $(SubscriptionId)
+    backendAzureRmSubscriptionId: $(azureSubscription)
