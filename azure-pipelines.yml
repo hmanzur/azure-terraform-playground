@@ -21,12 +21,18 @@ steps:
   displayName: Install Dependencies
   inputs:
     command: init
-    backendType: azurerm
-    environmentServiceName: TerraformConnectionName
+  env:
+    ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+    ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+    ARM_TENANT_ID: $(ARM_TENANT_ID)
+    ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
 
 - task: TerraformCLI@0
   displayName: Apply Changes
   inputs:
     command: apply
-    backendType: azurerm
-    environmentServiceName: TerraformConnectionName
+  env:
+    ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+    ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+    ARM_TENANT_ID: $(ARM_TENANT_ID)
+    ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
