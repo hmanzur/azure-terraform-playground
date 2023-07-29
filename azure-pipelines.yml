@@ -20,6 +20,9 @@ steps:
   displayName: Install Dependencies
   inputs:
     command: init
+    runAzLogin: true
+    backendType: azurerm
+    backendAzureRmSubscriptionId: $(SubscriptionId)
 
 - task: TerraformCLI@0
   displayName: Apply Changes
