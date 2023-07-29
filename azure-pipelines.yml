@@ -23,7 +23,7 @@ steps:
     command: init
     runAzLogin: true
     backendType: azurerm
-    backendAzureRmSubscriptionId: $(TerraformConnectionName)
+    providerAzureRmSubscriptionId: $(TerraformConnectionName)
 
 - task: TerraformCLI@0
   displayName: Apply Changes
@@ -31,4 +31,4 @@ steps:
     command: apply
     runAzLogin: true
     backendType: azurerm
-    backendAzureRmSubscriptionId: $(TerraformConnectionName)
+    providerAzureRmSubscriptionId: $(TerraformConnectionName)
