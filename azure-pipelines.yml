@@ -21,14 +21,10 @@ steps:
   displayName: Install Dependencies
   inputs:
     command: init
-    runAzLogin: true
-    backendType: azurerm
     environmentServiceName: TerraformConnectionName
 
 - task: TerraformCLI@0
   displayName: Apply Changes
   inputs:
     command: apply
-    runAzLogin: true
-    backendType: azurerm
     environmentServiceName: TerraformConnectionName
