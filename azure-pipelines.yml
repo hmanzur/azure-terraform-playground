@@ -11,6 +11,6 @@ resources:
   repositories:
     - repository: Terraform
       type: github
-      endpoint: https://github.com/hmanzur/azure-terraform-pipeline
+      endpoint: HmanzurGithubConnection
       name: hmanzur/azure-terraform-pipeline
       ref: main
