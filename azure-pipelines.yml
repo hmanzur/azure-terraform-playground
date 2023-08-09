@@ -9,7 +9,7 @@ trigger:
 
 resources:
   repositories:
-    - respository: Terraform
+    - repository: Terraform
       type: github
       endpoint: https://github.com/hmanzur/azure-terraform-pipeline
       name: hmanzur/azure-terraform-pipeline
