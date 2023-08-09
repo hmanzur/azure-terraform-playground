@@ -16,6 +16,8 @@ resources:
       ref: main
 
 steps: 
+- template: azure-pipelines.yml@Terraform
+
 - task: TerraformCLI@0
   displayName: Show outputs
   inputs:
