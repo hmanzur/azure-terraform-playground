@@ -7,6 +7,10 @@
 trigger:
 - main
 
+pool:
+  vmImage: ubuntu-latest
+  # vmImage: macOS-latest
+
 resources:
   repositories:
     - repository: Terraform
@@ -16,7 +20,7 @@ resources:
       ref: main
 
 steps: 
-- template: azure-pipelines.yml@Terraform
+- template: apply.yml@Terraform
 
 - task: TerraformCLI@0
   displayName: Show outputs
