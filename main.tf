@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "main" {
 }
 
 resource "azurerm_service_plan" "backend" {
-  name                = "Habi-ServicePlan"
+  name                = "Backend-ServicePlan"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   os_type             = "Linux"
