@@ -48,7 +48,7 @@ resource "azurerm_container_registry" "backend" {
   name                  = "backendapp"
   resource_group_name   = azurerm_resource_group.main.name
   location              = azurerm_resource_group.main.location
-  sku                   = "Basic"
+  sku                   = "Standard"
 }
 
 resource "azurerm_log_analytics_workspace" "this" {
