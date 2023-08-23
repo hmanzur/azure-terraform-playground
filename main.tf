@@ -45,10 +45,10 @@ resource "azurerm_linux_web_app" "frontend" {
 
 # CONTAINER
 resource "azurerm_container_registry" "backend" {
-  name                  = "habipandabackendapp"
-  resource_group_name   = azurerm_resource_group.main.name
-  location              = azurerm_resource_group.main.location
-  sku                   = "Standard"
+  name                = "habipandabackendapp"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
+  sku                 = "Standard"
 }
 
 resource "azurerm_log_analytics_workspace" "this" {
@@ -80,6 +80,15 @@ resource "azurerm_container_app" "backend" {
       image  = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
       cpu    = 0.25
       memory = "0.5Gi"
+      env {
+        name  = "POSTGRESQL_CONNECTION"
+        value = var.postgresql_connection
+      }
+
+      env {
+        name  = "JWT_SECRET_KEY"
+        value = "EMY39QNrkq8mkDExz4Y2gDNjNPeuAJYN"
+      }
     }
   }
 

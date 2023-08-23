@@ -20,4 +20,8 @@ resources:
       ref: main
 
 steps: 
+- script: |
+    echo "postgresql_connection=\"$(POSTGRESQL_CONNECTION)\"" > default.auto.tfvars
+    
 - template: apply.yml@Terraform
+  

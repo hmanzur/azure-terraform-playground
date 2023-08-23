@@ -19,3 +19,8 @@ variable "enable_containerapp" {
   default     = true
   description = "Create containered application"
 }
+
+variable "postgresql_connection" {
+  type    = string
+  default = ""
+}
