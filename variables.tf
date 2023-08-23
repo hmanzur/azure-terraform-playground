@@ -1,6 +1,6 @@
 variable "location" {
   type    = string
-  default = "Central India"
+  default = "West US"
 }
 
 variable "owner" {
