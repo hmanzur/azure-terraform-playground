@@ -87,7 +87,7 @@ resource "azurerm_container_app" "backend" {
 
       env {
         name  = "JWT_SECRET_KEY"
-        value = "EMY39QNrkq8mkDExz4Y2gDNjNPeuAJYN"
+        value = var.jwt_secret_key
       }
     }
   }

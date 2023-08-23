@@ -21,6 +21,13 @@ variable "enable_containerapp" {
 }
 
 variable "postgresql_connection" {
-  type    = string
-  default = ""
+  type      = string
+  default   = ""
+  sensitive = true
+}
+
+variable "jwt_secret_key" {
+  type      = string
+  default   = "EMY39QNrkq8mkDExz4Y2gDNjNPeuAJYN"
+  sensitive = true
 }
