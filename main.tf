@@ -44,16 +44,25 @@ resource "azurerm_linux_web_app" "frontend" {
 # END FRONTEND
 
 # CONTAINER
-resource "azurerm_container_app_environment" "backend" {
-  count               = var.enable_containerapp ? 1 : 0
-  name                = "Backend-Environment"
+resource "azurerm_log_analytics_workspace" "this" {
+  name                = "backend-logger"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 7
+}
+
+resource "azurerm_container_app_environment" "backend" {
+  count                      = var.enable_containerapp ? 1 : 0
+  name                       = "Backend-Environment"
+  location                   = azurerm_resource_group.main.location
+  resource_group_name        = azurerm_resource_group.main.name
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
 }
 
 resource "azurerm_container_app" "backend" {
   count                        = var.enable_containerapp ? 1 : 0
-  name                         = "example-app"
+  name                         = "backend-app"
   container_app_environment_id = azurerm_container_app_environment.backend[count.index].id
   resource_group_name          = azurerm_resource_group.main.name
   revision_mode                = "Single"
