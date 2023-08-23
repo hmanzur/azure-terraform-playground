@@ -51,6 +51,18 @@ resource "azurerm_container_registry" "backend" {
   sku                 = "Standard"
 }
 
+resource "azurerm_user_assigned_identity" "containerapp" {
+  location            = azurerm_resource_group.main.location
+  name                = "containerappmi"
+  resource_group_name = azurerm_resource_group.main.name
+}
+
+resource "azurerm_role_assignment" "containerapp" {
+  scope                = azurerm_container_registry.backend.id
+  role_definition_name = "acrpull"
+  principal_id         = azurerm_user_assigned_identity.containerapp.principal_id
+}
+
 resource "azurerm_log_analytics_workspace" "this" {
   name                = "backend-logger"
   location            = azurerm_resource_group.main.location
@@ -73,6 +85,17 @@ resource "azurerm_container_app" "backend" {
   container_app_environment_id = azurerm_container_app_environment.backend[count.index].id
   resource_group_name          = azurerm_resource_group.main.name
   revision_mode                = "Single"
+
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.containerapp.id]
+  }
+
+  ingress {
+    target_port                = 3000
+    allow_insecure_connections = true
+    external_enabled           = true
+  }
 
   template {
     container {
